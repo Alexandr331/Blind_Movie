@@ -1,4 +1,4 @@
-@import "./shared/input.module.scss";
+@import "./shared/variables.module.scss";
 @import "./Home.module.scss";
 
 
@@ -90,6 +90,7 @@ body {
 }
 
 body {
+  @include adaptive-font(12, 16);
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -123,6 +124,34 @@ input {
   @include input-width(250, 300);
   &:focus {
     outline: none;
-    box-shadow: 0 0 15px rgb(136, 136, 136);
+    box-shadow: 0 0 15px rgb(22, 22, 22);
   }
+}
+
+.visible {
+  animation: fade-in .8s linear;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@mixin input-width($min-width, $max-width) {
+  $add-size: $max-width - $min-width;
+  width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1780)
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  background-color: rgb(29, 29, 29);
+  padding: 15px 35px;
+  cursor: pointer;
 }

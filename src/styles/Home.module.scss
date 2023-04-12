@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
   .form-item {
     display: flex;
     flex-direction: column;
@@ -23,6 +24,24 @@
 .home__inner {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  h1 {
+    margin-bottom: 50px;
+  }
+}
+
+.home__title {
+  @include adaptive-font(30, 48);
+  text-transform: uppercase;
+}
+
+.change-form__link {
+  span {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

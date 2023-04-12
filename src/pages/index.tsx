@@ -1,50 +1,23 @@
 import MyHead from '@/components/MyHead'
-import { useState } from "react";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { signin, signout } from '@/store/UserSlice';
-import { Input } from '@/components/shared/Input';
-import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
+import { useEffect, useState } from "react";
+import SignInForm from '@/components/shared/SignInForm';
+import SignUpForm from '@/components/shared/SignUpForm';
 
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [authHandler, setAuthHandler] = useState<String | null>(null)
-  const [password, setPassword] = useState("");
-  const userEmail = useAppSelector(state => state.user.email)
-  
-  const dispatch = useAppDispatch()
 
-  const handleSignIn = async () => {
-    try {
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          dispatch(signin({
-            email: user.email
-          }))
-          setAuthHandler(user.email)
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..dsd
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [className, setClassName] = useState("")
+  const [form, setForm] = useState(false)
+  const [error, setError] = useState("")
+  // const handleSignOut = async () => {
+  //   try {
+  //     await auth.signOut();
+  //     dispatch(signout())
 
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-      dispatch(signout())
-      setAuthHandler(null)
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // const handleAddData = async () => {
   //   try {
@@ -54,25 +27,22 @@ export default function Home() {
   //   }
   // };
 
+  useEffect(() => {
+    setClassName("visible")
+  }, [])
+
   return (
     <>
     <MyHead title="My title"/>
     <div className="home__inner">
-
-      {authHandler ? (
-        <div >
-          <p>Signed in as {userEmail}</p>
-          <button onClick={handleSignOut}>Sign out</button>
-          {/* <button onClick={handleAddData}>Add data to Firestore</button> */}
-        </div>
-      ) : (
-        <form className="user-form" onSubmit={handleSignIn}>
-          <Input label="Email" type="email" inputData={email} setInputData={setEmail}/>
-          <Input label="Password" type="password" inputData={password} setInputData={setPassword}/>
-          <button type="submit">Sign in</button>
-        </form>
+      <h1 className={`home__title ${className}`}>Blind movie</h1>
+      {error && (
+        <div>{error}</div>
       )}
-
+      {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
+      <div className="change-form__link">
+      {!form ? "Don't have" : "Have"} an account? <span onClick={() => setForm(state => !state)}>{!form ? "Register" : "Log in"}</span>
+      </div>
     </div>
     </>
   )

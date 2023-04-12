@@ -2,3 +2,7 @@
   $add-size: $max-width - $min-width;
   width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1780)
 }
+@mixin adaptive-font($minSize, $maxSize) {
+  $addSize: $maxSize - $minSize;
+  font-size: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1680));
+}
