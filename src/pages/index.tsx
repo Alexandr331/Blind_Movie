@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <>
-    <MyHead title="My title"/>
+    <MyHead title={!form ? "Sign in" : "Sign up"}/>
     <div className="home__inner">
       <h1 className={`home__title ${className}`}>Blind movie</h1>
       {error && (

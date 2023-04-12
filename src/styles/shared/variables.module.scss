@@ -2,7 +2,13 @@
   $add-size: $max-width - $min-width;
   width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1780)
 }
+
 @mixin adaptive-font($minSize, $maxSize) {
   $addSize: $maxSize - $minSize;
   font-size: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1680));
+}
+
+@mixin adaptive-margin($min-margin, $max-margin) {
+  $add-margin: $max-margin - $min-margin;
+  margin-bottom: calc(#{$min-margin + px} + #{$add-margin} * 100vh / 1000)
 }
