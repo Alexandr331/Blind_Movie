@@ -1,5 +1,6 @@
 @import "./shared/variables.module.scss";
 @import "./Home.module.scss";
+@import "./shared/input.module.scss";
 
 
 :root {
@@ -155,4 +156,8 @@ button {
   background-color: rgb(29, 29, 29);
   padding: 15px 35px;
   cursor: pointer;
+}
+
+.form-item {
+  position: relative;
 }

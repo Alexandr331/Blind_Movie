@@ -41,7 +41,10 @@ export default function Home() {
       )}
       {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
       <div className="change-form__link">
-      {!form ? "Don't have" : "Have"} an account? <span onClick={() => setForm(state => !state)}>{!form ? "Register" : "Log in"}</span>
+      {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
+        setForm(state => !state) 
+        setError("")
+        }}>{!form ? "Register" : "Log in"}</span>
       </div>
     </div>
     </>
