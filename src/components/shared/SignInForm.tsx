@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { signin } from '@/store/UserSlice';
 import { Input } from '@/components/shared/Input';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
@@ -19,7 +19,7 @@ const SignInForm = ({setError}: any) => {
     e.preventDefault()
     try {
       setLoading(!loading)
-      createUserWithEmailAndPassword(auth, email, password)
+      signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           dispatch(signin({

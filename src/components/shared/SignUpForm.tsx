@@ -27,7 +27,8 @@ const SignUpForm = ({setError}: any) => {
           .then((userCredential) => {
             const user = userCredential.user;
             dispatch(signin({
-              email: user.email
+              email: user.email,
+              uid: user.uid
             }))
             router.push('/home')
           })

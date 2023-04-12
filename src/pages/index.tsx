@@ -2,6 +2,11 @@ import MyHead from '@/components/MyHead'
 import { useEffect, useState } from "react";
 import SignInForm from '@/components/shared/SignInForm';
 import SignUpForm from '@/components/shared/SignUpForm';
+import { auth } from '../../firebase'
+import { signin } from '@/store/UserSlice'
+import router from 'next/router'
+import { onAuthStateChanged } from 'firebase/auth'
+import { useAppDispatch, useAppSelector } from '@/hooks/useStore'
 
 
 export default function Home() {
@@ -13,6 +18,25 @@ export default function Home() {
   useEffect(() => {
     setClassName("visible")
   }, [])
+
+  const uid = useAppSelector(state => state.user.uid)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userid = user.uid;
+        const userEmail = user.email;
+        dispatch(signin({
+          email: userEmail,
+          uid: userid
+        }))
+        router.push("/home")
+      } else {
+        router.push("/")
+      }
+    });
+  }, [dispatch])
 
   return (
     <>
