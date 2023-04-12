@@ -1,8 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ReactNode, SetStateAction } from "react";
+
+interface userState {
+  email: string | null,
+}
 
 const initialState = {
   email: null,
-}
+} as userState
 
 const userSlice = createSlice({
   name: 'user',

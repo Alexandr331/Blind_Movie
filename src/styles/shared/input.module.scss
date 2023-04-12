@@ -1,0 +1,4 @@
+@mixin input-width($min-width, $max-width) {
+  $add-size: $max-width - $min-width;
+  width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1780)
+}

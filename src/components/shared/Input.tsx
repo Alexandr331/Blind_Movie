@@ -8,9 +8,11 @@ type dataInput = {
 
 export const Input = ({ type, label, inputData, setInputData}: dataInput) => {
   return (
-    <label>
-      {label}:
-      <input type={type} value={inputData} onChange={(e) => setInputData(e.target.value)} />
-    </label>
+    <div className="form-item">
+      <span>
+        {label}:
+      </span>
+      <input className="form-input" id={type} type={type} value={inputData} onChange={(e) => setInputData(e.target.value)} />
+    </div>
   )
 }

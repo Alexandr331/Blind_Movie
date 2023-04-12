@@ -15,7 +15,9 @@ const Layout = ({children}: layout) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        {children}
+        <div className="container">
+          {children}
+        </div>
       </main>
     </>
   )

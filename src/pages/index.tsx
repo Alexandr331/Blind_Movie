@@ -1,23 +1,19 @@
 import MyHead from '@/components/MyHead'
 import { useState } from "react";
-import { auth, firestore } from "../../firebase";
+import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { signin, signout } from '@/store/UserSlice';
-import UseAuth from '@/hooks/UseAuth';
 import { Input } from '@/components/shared/Input';
-
+import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
 
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [authHandler, setAuthHandler] = useState(null);
+  const [authHandler, setAuthHandler] = useState<String | null>(null)
   const [password, setPassword] = useState("");
-  const { emailAuth } = UseAuth()
-  const userStore = useSelector(state => state.user)
+  const userEmail = useAppSelector(state => state.user.email)
   
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const handleSignIn = async () => {
     try {
@@ -61,20 +57,20 @@ export default function Home() {
   return (
     <>
     <MyHead title="My title"/>
-    <div>
+    <div className="home__inner">
 
       {authHandler ? (
-        <div>
-          <p>Signed in as {userStore.email}</p>
+        <div >
+          <p>Signed in as {userEmail}</p>
           <button onClick={handleSignOut}>Sign out</button>
           {/* <button onClick={handleAddData}>Add data to Firestore</button> */}
         </div>
       ) : (
-        <div>
+        <form className="user-form" onSubmit={handleSignIn}>
           <Input label="Email" type="email" inputData={email} setInputData={setEmail}/>
           <Input label="Password" type="password" inputData={password} setInputData={setPassword}/>
-          <button onClick={handleSignIn}>Sign in</button>
-        </div>
+          <button type="submit">Sign in</button>
+        </form>
       )}
 
     </div>

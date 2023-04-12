@@ -1,3 +1,7 @@
+@import "./shared/input.module.scss";
+@import "./Home.module.scss";
+
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -103,5 +107,22 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1800;
+  padding: 0 10px;
+}
+
+input {
+  border: none;
+  border-radius: 7px;
+  padding: 15px;
+  @include input-width(250, 300);
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgb(136, 136, 136);
   }
 }
