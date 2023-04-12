@@ -52,7 +52,7 @@ const SignUpForm = ({setError}: any) => {
         <Input label="Email" id="email" type="email" inputData={email} setInputData={setEmail}/>
         <Input label="Password" id="password" type="password" inputData={password} setInputData={setPassword} />
         <Input label="Verify password" id="verify-password" type="password" inputData={verifyPassword} setInputData={setVerifyPassword}/>
-        <button type="submit">Sign Up</button>
+        <button className="form-btn" type="submit">Sign Up</button>
       </form>
       )}
     </>

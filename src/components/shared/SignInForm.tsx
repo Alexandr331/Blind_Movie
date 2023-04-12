@@ -41,7 +41,7 @@ const SignInForm = ({setError}: any) => {
     <form className="user-form"  onSubmit={(e) => handleSignIn(e)}>
       <Input label="Email" id="email" type="email" inputData={email} setInputData={setEmail}/>
       <Input label="Password" id="password" type="password" inputData={password} setInputData={setPassword} />
-      <button type="submit">Sign in</button>
+      <button className="form-btn" type="submit">Sign in</button>
     </form>
   )
 }

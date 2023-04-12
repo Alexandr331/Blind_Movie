@@ -9,23 +9,6 @@ export default function Home() {
   const [className, setClassName] = useState("")
   const [form, setForm] = useState(false)
   const [error, setError] = useState("")
-  // const handleSignOut = async () => {
-  //   try {
-  //     await auth.signOut();
-  //     dispatch(signout())
-
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const handleAddData = async () => {
-  //   try {
-  //     await firestore.collection("data").add({ text: "Hello, Firebase!" });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   useEffect(() => {
     setClassName("visible")
@@ -34,10 +17,10 @@ export default function Home() {
   return (
     <>
     <MyHead title={!form ? "Sign in" : "Sign up"}/>
-    <div className="home__inner">
-      <h1 className={`home__title ${className}`}>Blind movie</h1>
+    <div className="sign__inner">
+      <h1 className={`sign__title ${className}`}>Blind movie</h1>
       {error && (
-        <div>{error}</div>
+        <div className="error">{error}</div>
       )}
       {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
       <div className="change-form__link">

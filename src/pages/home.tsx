@@ -1,14 +1,19 @@
 import MyHead from '@/components/MyHead'
+import UseAuth from '@/hooks/UseAuth'
 
 
 export default function Main() {
 
+  const { emailAuth } = UseAuth()
+
   return (
     <>
-    <MyHead title=""/>
-    <div className="app__inner">
-        Home Page
-    </div>
+    <MyHead title="Home"/>
+    {emailAuth &&
+        <div className="home__inner">
+          Home Page
+        </div>
+    }
     </>
   )
 }

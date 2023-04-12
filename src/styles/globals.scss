@@ -1,6 +1,7 @@
 @import "./shared/variables.module.scss";
-@import "./Home.module.scss";
 @import "./shared/input.module.scss";
+@import "./Sign.module.scss";
+@import "./Home.module.scss";
 
 
 :root {
@@ -160,4 +161,22 @@ button {
 
 .form-item {
   position: relative;
+}
+
+.error {
+  padding: 20px 50px;
+  border-radius: 12px;
+  background-color: red;
+  @include adaptive-font(12, 16);
+  @include adaptive-margin(20, 50);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+  width: 100%;
 }
