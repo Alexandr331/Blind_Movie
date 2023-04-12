@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { signin, signout } from '@/store/UserSlice';
 import UseAuth from '@/hooks/UseAuth';
-import { Input } from '@/components/shared/input';
+import { Input } from '@/components/shared/Input';
 
 
 
