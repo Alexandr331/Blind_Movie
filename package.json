@@ -17,6 +17,7 @@
     "eslint-config-next": "13.3.0",
     "firebase": "^9.19.1",
     "next": "13.3.0",
+    "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",

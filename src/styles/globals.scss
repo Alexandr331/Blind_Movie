@@ -96,6 +96,7 @@ body {
   @include adaptive-font(13, 16);
   // font-size: 16px;
   color: rgb(var(--foreground-rgb));
+  line-height: 1.4;
   background: linear-gradient(
       to bottom,
       transparent,
