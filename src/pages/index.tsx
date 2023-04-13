@@ -1,4 +1,3 @@
-import MyHead from '@/components/MyHead'
 import { useEffect, useState } from "react";
 import SignInForm from '@/components/shared/SignInForm';
 import SignUpForm from '@/components/shared/SignUpForm';
@@ -7,6 +6,7 @@ import { signin } from '@/store/UserSlice'
 import router from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore'
+import Head from 'next/head';
 
 
 export default function Home() {
@@ -40,7 +40,9 @@ export default function Home() {
 
   return (
     <>
-    <MyHead title={!form ? "Sign in" : "Sign up"}/>
+    <Head>
+      <title>{!form ? "Sign in" : "Sign up"}</title>
+    </Head>
     <div className="sign__inner">
       <h1 className={`sign__title ${className}`}>Blind movie</h1>
       {error && (
@@ -48,10 +50,10 @@ export default function Home() {
       )}
       {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
       <div className="change-form__link">
-      {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
-        setForm(state => !state) 
-        setError("")
-        }}>{!form ? "Register" : "Log in"}</span>
+        {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
+          setForm(state => !state) 
+          setError("")
+          }}>{!form ? "Register" : "Log in"}</span>
       </div>
     </div>
     </>

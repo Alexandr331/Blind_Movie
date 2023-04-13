@@ -1,4 +1,3 @@
-import MyHead from '@/components/MyHead'
 import UseAuth from '@/hooks/UseAuth'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect } from 'react'
@@ -6,6 +5,7 @@ import { auth } from '../../firebase'
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore'
 import router from 'next/router';
 import { signin } from '@/store/UserSlice'
+import Head from 'next/head'
 
 
 export default function Main() {
@@ -31,7 +31,9 @@ export default function Main() {
 
   return (
     <>
-    <MyHead title="Home"/>
+    <Head>
+      <title>Home</title>
+    </Head>
     {emailAuth &&
         <div className="home__inner">
           Home Page
