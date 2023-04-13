@@ -3,7 +3,7 @@ import { signin } from '@/store/UserSlice';
 import { Input } from '@/components/shared/Input';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
 import { useState } from "react";
-import { auth } from '../../../firebase';
+import { auth } from '../../firebase';
 import { redirect } from 'next/dist/server/api-utils';
 import router from 'next/router';
 

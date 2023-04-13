@@ -3,7 +3,7 @@ import { signin } from '@/store/UserSlice';
 import { Input } from '@/components/shared/Input';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
 import { useState } from "react";
-import { auth } from '../../../firebase';
+import { auth } from '../../firebase';
 import router from 'next/router';
 
 
@@ -23,7 +23,8 @@ const SignInForm = ({setError}: any) => {
         .then((userCredential) => {
           const user = userCredential.user;
           dispatch(signin({
-            email: user.email
+            email: user.email,
+            uid: user.uid
           }))
           setLoading(!loading)
           router.push('/home')

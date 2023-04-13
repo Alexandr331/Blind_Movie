@@ -24,6 +24,7 @@ export default function Main() {
           uid: userid
         }))
       } else {
+        console.log("You are not signed in, please, do it")        
         router.push("/")
       }
     });
@@ -35,9 +36,9 @@ export default function Main() {
       <title>Home</title>
     </Head>
     {emailAuth &&
-        <div className="home__inner">
-          Home Page
-        </div>
+      <div className="home__inner">
+        Home Page
+      </div>
     }
     </>
   )

@@ -2,6 +2,7 @@
 @import "./shared/input.module.scss";
 @import "./Sign.module.scss";
 @import "./Home.module.scss";
+@import "./Header.module.scss";
 
 
 :root {
@@ -171,12 +172,16 @@ button {
   @include adaptive-margin(20, 50);
 }
 
-.main {
+main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
   width: 100%;
+}
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

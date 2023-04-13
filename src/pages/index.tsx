@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import SignInForm from '@/components/shared/SignInForm';
-import SignUpForm from '@/components/shared/SignUpForm';
+import SignInForm from '@/components/SignInForm';
+import SignUpForm from '@/components/SignUpForm';
 import { auth } from '../../firebase'
 import { signin } from '@/store/UserSlice'
 import router from 'next/router'

@@ -1,0 +1,13 @@
+.header {
+  max-width: 100%;
+  border-bottom: 1px solid rgba($color: #5e5e5e, $alpha: 0.4);
+}
+
+.header__inner {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  button {
+    margin-left: auto;
+  }
+}
