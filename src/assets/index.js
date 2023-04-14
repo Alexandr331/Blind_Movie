@@ -3,7 +3,7 @@ import visibleOff from "./icons/visible_off.png"
 
 const images = {
   visible,
-  visibleOff
+  visibleOff,
 }
 
 export default images

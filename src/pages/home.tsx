@@ -36,7 +36,7 @@ export default function Main() {
       <title>Home</title>
     </Head>
     {emailAuth &&
-      <div className="home__inner">
+      <div className="inner">
         Home Page
       </div>
     }

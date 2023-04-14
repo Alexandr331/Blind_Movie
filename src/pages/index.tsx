@@ -43,17 +43,19 @@ export default function Home() {
     <Head>
       <title>{!form ? "Sign in" : "Sign up"}</title>
     </Head>
-    <div className="sign__inner">
-      <h1 className={`sign__title ${className}`}>Blind movie</h1>
-      {error && (
-        <div className="error">{error}</div>
-      )}
-      {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
-      <div className="change-form__link">
-        {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
-          setForm(state => !state) 
-          setError("")
-          }}>{!form ? "Register" : "Log in"}</span>
+    <div className="inner">
+      <div className="form-box">
+        <h1 className={`sign__title ${className}`}>Blind movie</h1>
+        {error && (
+          <div className="error">{error}</div>
+        )}
+        {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
+        <div className="change-form__link">
+          {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
+            setForm(state => !state) 
+            setError("")
+            }}>{!form ? "Register" : "Log in"}</span>
+        </div>
       </div>
     </div>
     </>

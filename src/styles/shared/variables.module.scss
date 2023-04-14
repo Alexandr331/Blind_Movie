@@ -1,6 +1,6 @@
 @mixin input-width($min-width, $max-width) {
   $add-size: $max-width - $min-width;
-  width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1780)
+  width: calc(#{$min-width + px} + #{$add-size} * (100vw - 320px) / 1680)
 }
 
 @mixin adaptive-font($minSize, $maxSize) {
@@ -12,3 +12,5 @@
   $add-margin: $max-margin - $min-margin;
   margin-bottom: calc(#{$min-margin + px} + #{$add-margin} * 100vh / 1000)
 }
+
+$border: 1px solid rgba($color: #5e5e5e, $alpha: 0.4);

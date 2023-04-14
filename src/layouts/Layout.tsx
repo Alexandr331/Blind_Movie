@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { Roboto } from 'next/font/google'
 import Header from "@/components/Header"
-
+import images from "@/assets"
 
 type layout ={ 
   children: JSX.Element
@@ -24,6 +24,9 @@ const Layout = ({children}: layout) => {
             {children}
           </div>
         </main>
+        <video className="video-bg" muted autoPlay loop playsInline>
+          <source src="/assets/video-bg.mp4" />
+        </video>
       </div>
     </div>
   )
