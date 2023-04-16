@@ -26,16 +26,18 @@ const SignInForm = ({setError}: any) => {
             email: user.email,
             uid: user.uid
           }))
-          setLoading(!loading)
-          router.push('/home')
+
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          setError(errorCode)          
         });
+      router.push('/home')
+      setLoading(!loading)
     } catch (error) {
       console.error(error);
-    }
+    }    
   };
 
   return (

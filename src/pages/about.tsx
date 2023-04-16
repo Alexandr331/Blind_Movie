@@ -27,15 +27,15 @@ export default function Main() {
       }
     });
   }, [dispatch])
-
+  
   return (
     <>
     <Head>
-      <title>Home</title>
+      <title>About</title>
     </Head>
     {emailAuth &&
       <div className="inner">
-        Home Page
+        About Page
       </div>
     }
     </>

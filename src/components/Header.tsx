@@ -4,6 +4,7 @@ import { auth } from "../../firebase"
 import { useRouter } from "next/router"
 import { useAppDispatch } from "@/hooks/useStore"
 import { signout } from "@/store/UserSlice"
+import Link from "next/link"
 
 const Header = () => {
   
@@ -23,13 +24,17 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <div className="header__inner">
-          {emailAuth && 
+        {emailAuth && 
+          <div className="header__inner">
+            <nav className="nav">
+              <Link href="/home">Home</Link>
+              <Link href="/about">About</Link>
+            </nav>
             <button className="logout-btn" onClick={handleLogOut}>
               Log out
             </button>
-          }
-        </div>
+          </div>
+        }
       </div>
     </header>
   )

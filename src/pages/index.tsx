@@ -5,8 +5,10 @@ import { auth } from '../../firebase'
 import { signin } from '@/store/UserSlice'
 import router from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
-import { useAppDispatch, useAppSelector } from '@/hooks/useStore'
+import { useAppDispatch } from '@/hooks/useStore'
 import Head from 'next/head';
+import { NextResponse } from "next/server";
+
 
 
 export default function Home() {
@@ -19,7 +21,6 @@ export default function Home() {
     setClassName("visible")
   }, [])
 
-  const uid = useAppSelector(state => state.user.uid)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -37,6 +38,8 @@ export default function Home() {
       }
     });
   }, [dispatch])
+
+  
 
   return (
     <>

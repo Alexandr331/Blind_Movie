@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { signin } from '@/store/UserSlice';
 import { Input } from '@/components/shared/Input';
 import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
@@ -23,23 +23,13 @@ const SignUpForm = ({setError}: any) => {
     if (verifyPassword === password && password.length !== 0) {
       try {
         setLoading(!loading)
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            dispatch(signin({
-              email: user.email,
-              uid: user.uid
-            }))
-            router.push('/home')
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-          });
-        } catch (error) {
-          console.error(error);
-        }
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+        await sendEmailVerification(userCredential.user)
+        router.push('/')
         setLoading(!loading)
+        } catch (error) {
+          setError(error)  
+        }
     }
     else {
       setError("Passwords is not matched")

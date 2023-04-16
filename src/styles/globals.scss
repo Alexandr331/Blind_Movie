@@ -129,7 +129,7 @@ input {
   @include input-width(250, 300);
   &:focus {
     outline: none;
-    box-shadow: 0 0 15px rgb(22, 22, 22);
+    // box-shadow: 0 0 15px rgb(22, 22, 22);
   }
 }
 
@@ -193,6 +193,7 @@ main {
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: rgba(0, 0, 0, .7);
 }
 
 .video-bg {
