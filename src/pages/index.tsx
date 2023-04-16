@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
-import SignInForm from '@/components/SignInForm';
-import SignUpForm from '@/components/SignUpForm';
-import { auth } from '../../firebase'
-import { signin } from '@/store/UserSlice'
-import router from 'next/router'
+import UseAuth from '@/hooks/UseAuth'
 import { onAuthStateChanged } from 'firebase/auth'
-import { useAppDispatch } from '@/hooks/useStore'
-import Head from 'next/head';
-import { NextResponse } from "next/server";
+import { useEffect } from 'react'
+import { auth } from '../../firebase'
+import { useAppDispatch, useAppSelector } from '@/hooks/useStore'
+import router from 'next/router';
+import { signin } from '@/store/UserSlice'
+import Head from 'next/head'
 
 
-
-export default function Home() {
-
-  const [className, setClassName] = useState("")
-  const [form, setForm] = useState(false)
-  const [error, setError] = useState("")
-
-  useEffect(() => {
-    setClassName("visible")
-  }, [])
-
+export default function Main() {
+  const { emailAuth } = UseAuth()
+  const uid = useAppSelector(state => state.user.uid)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -32,35 +22,22 @@ export default function Home() {
           email: userEmail,
           uid: userid
         }))
-        router.push("/home")
-      } else {
-        router.push("/")
+      } else {      
+        router.push("/logs")
       }
     });
   }, [dispatch])
 
-  
-
   return (
     <>
     <Head>
-      <title>{!form ? "Sign in" : "Sign up"}</title>
+      <title>Home</title>
     </Head>
-    <div className="inner">
-      <div className="form-box">
-        <h1 className={`sign__title ${className}`}>Blind movie</h1>
-        {error && (
-          <div className="error">{error}</div>
-        )}
-        {!form ? <SignInForm setError={setError} /> : <SignUpForm setError={setError} />}
-        <div className="change-form__link">
-          {!form ? "Don't have" : "Have"} an account? <span onClick={() => {
-            setForm(state => !state) 
-            setError("")
-            }}>{!form ? "Register" : "Log in"}</span>
-        </div>
+    {emailAuth &&
+      <div className="inner">
+        Home Page
       </div>
-    </div>
+    }
     </>
   )
 }

@@ -8,7 +8,7 @@ import { redirect } from 'next/dist/server/api-utils';
 import router from 'next/router';
 
 
-const SignUpForm = ({setError}: any) => {
+const SignUpForm = ({setError, setForm}: any) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,11 +22,11 @@ const SignUpForm = ({setError}: any) => {
     
     if (verifyPassword === password && password.length !== 0) {
       try {
-        setLoading(!loading)
+        setLoading(true)
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         await sendEmailVerification(userCredential.user)
-        router.push('/')
-        setLoading(!loading)
+        setLoading(false)
+        setForm(false)
         } catch (error) {
           setError(error)  
         }

@@ -15,7 +15,7 @@ const Header = () => {
   const handleLogOut = () => {
     signOut(auth).then(() => {
       dispatch(signout())
-      router.push('/')
+      router.push('/logs')
     }).catch((error) => {
       console.log('some error')    
     });
@@ -27,7 +27,7 @@ const Header = () => {
         {emailAuth && 
           <div className="header__inner">
             <nav className="nav">
-              <Link href="/home">Home</Link>
+              <Link href="/">Home</Link>
               <Link href="/about">About</Link>
             </nav>
             <button className="logout-btn" onClick={handleLogOut}>

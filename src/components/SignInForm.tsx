@@ -33,7 +33,7 @@ const SignInForm = ({setError}: any) => {
           const errorMessage = error.message;
           setError(errorCode)          
         });
-      router.push('/home')
+      router.push('/')
       setLoading(!loading)
     } catch (error) {
       console.error(error);
