@@ -8,7 +8,7 @@ import { redirect } from 'next/dist/server/api-utils';
 import router from 'next/router';
 
 
-const SignUpForm = ({setError, setForm}: any) => {
+const SignUpForm = ({setError}: any) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const SignUpForm = ({setError, setForm}: any) => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         await sendEmailVerification(userCredential.user)
         setLoading(false)
-        setForm(false)
+        router.push("/signin")
         } catch (error) {
           setError(error)  
         }
@@ -39,7 +39,7 @@ const SignUpForm = ({setError, setForm}: any) => {
   return (
     <>
       {loading ? (<div>Loading...</div>) : (
-      <form className="user-form" onSubmit={(e) => handleSignUp(e)}>
+      <form autoComplete="off" className="user-form" onSubmit={(e) => handleSignUp(e)}>
         <Input label="Email" id="email" type="email" inputData={email} setInputData={setEmail}/>
         <Input label="Password" id="password" type="password" inputData={password} setInputData={setPassword} />
         <Input label="Verify password" id="verify-password" type="password" inputData={verifyPassword} setInputData={setVerifyPassword}/>

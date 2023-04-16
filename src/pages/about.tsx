@@ -22,8 +22,6 @@ export default function Main() {
           email: userEmail,
           uid: userid
         }))
-      } else {      
-        router.push("/")
       }
     });
   }, [dispatch])

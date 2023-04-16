@@ -19,29 +19,23 @@ const SignInForm = ({setError}: any) => {
     e.preventDefault()
     try {
       setLoading(!loading)
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          dispatch(signin({
-            email: user.email,
-            uid: user.uid
-          }))
-
+      await signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          router.push('/')
+          setLoading(!loading)
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setError(errorCode)          
         });
-      router.push('/')
-      setLoading(!loading)
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }    
   };
 
   return (
-    <form className="user-form"  onSubmit={(e) => handleSignIn(e)}>
+    <form autoComplete="off" className="user-form"  onSubmit={(e) => handleSignIn(e)}>
       <Input label="Email" id="email" type="email" inputData={email} setInputData={setEmail}/>
       <Input label="Password" id="password" type="password" inputData={password} setInputData={setPassword} />
       <button className="form-btn" type="submit">Sign in</button>

@@ -15,7 +15,7 @@ const Header = () => {
   const handleLogOut = () => {
     signOut(auth).then(() => {
       dispatch(signout())
-      router.push('/logs')
+      router.push('/signin')
     }).catch((error) => {
       console.log('some error')    
     });

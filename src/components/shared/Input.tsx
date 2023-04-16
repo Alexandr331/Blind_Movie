@@ -18,7 +18,7 @@ export const Input = ({ id, type, label, inputData, setInputData}: dataInput) =>
       <span>
         {label}:
       </span>
-      <input className="form-input" id={id} type={!visibility ? type : "text"} value={inputData} onChange={(e) => setInputData(e.target.value)} />
+      <input  className="form-input" id={id} type={!visibility ? type : "text"} value={inputData} onChange={(e) => setInputData(e.target.value)} />
       {type === "password" && <Image width={26} className="eye-visibility" src={!visibility ? images.visible : images.visibleOff} alt="eye" onClick={() => setVisibility(!visibility)} />}
     </div>
   )
