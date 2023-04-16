@@ -1,10 +1,7 @@
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { signin } from '@/store/UserSlice';
 import { Input } from '@/components/shared/Input';
-import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
 import { useState } from "react";
 import { auth } from '../../firebase';
-import { redirect } from 'next/dist/server/api-utils';
 import router from 'next/router';
 
 
@@ -14,8 +11,6 @@ const SignUpForm = ({setError}: any) => {
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const userEmail = useAppSelector(state => state.user.email)
-  const dispatch = useAppDispatch()
 
   const handleSignUp = async (e: any) => {
     e.preventDefault()

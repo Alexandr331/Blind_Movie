@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
-import SignInForm from '@/components/SignInForm';
 import SignUpForm from '@/components/SignUpForm';
-import { auth } from '../../firebase'
-import { signin } from '@/store/UserSlice'
-import router from 'next/router'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useAppDispatch } from '@/hooks/useStore'
 import Head from 'next/head';
-import { NextResponse } from "next/server";
 import Link from "next/link";
 
 

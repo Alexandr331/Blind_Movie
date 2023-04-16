@@ -1,0 +1,32 @@
+.ai__response {
+  padding: 15px;
+  background-color: rgb(177, 177, 177);
+  border-radius: 12px;
+  width: fit-content;
+  max-width: 350px;
+}
+
+#ai {
+  height: 700px;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: $border ;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+#ai__response-box {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  padding-top: 20px;
+}

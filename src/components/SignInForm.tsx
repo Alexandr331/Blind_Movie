@@ -1,7 +1,5 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { signin } from '@/store/UserSlice';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Input } from '@/components/shared/Input';
-import { useAppDispatch, useAppSelector } from '@/hooks/useStore';
 import { useState } from "react";
 import { auth } from '../../firebase';
 import router from 'next/router';
@@ -12,8 +10,6 @@ const SignInForm = ({setError}: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const userEmail = useAppSelector(state => state.user.email)
-  const dispatch = useAppDispatch()
 
   const handleSignIn = async (e: any) => {
     e.preventDefault()
