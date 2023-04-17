@@ -10,11 +10,18 @@ import { Configuration, OpenAIApi } from "openai";
 import { AnyPtrRecord } from 'dns'
 import { Input } from '@/components/shared/Input'
 
+interface Message {
+  senderID: string | null
+  message: string
+}
+
 export default function Main() {
   const { emailAuth } = UseAuth()
-  const [textAI, setTextAI] = useState<string[]>([])
+  const [currentChat, setCurrentChat] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState("")
+  const [message, setMessage] = useState("")
   const dispatch = useAppDispatch()
+  const {email} = useAppSelector(state => state.user)
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -34,9 +41,7 @@ export default function Main() {
 
   const handleOpenAI = async (e: any) => {
     e.preventDefault()
-    
     const body = JSON.stringify(inputValue)
-    
     const options = {
       method: "POST",
       headers: {
@@ -47,10 +52,26 @@ export default function Main() {
     
     const res = await fetch("/api/ai", options)
     const data = await res.json()
-    setTextAI([...textAI, data.data])
-    setInputValue("")
-    console.log(textAI)
+    setMessage(data.data)
   }
+
+  useEffect(() => {
+    if( message ) {
+      setCurrentChat(prevChat => [...prevChat, 
+          {
+            senderID: 'me', 
+            message: inputValue
+          },
+          {
+            senderID: 'ai', 
+            message: message
+          }
+        ]
+      )
+      console.log(currentChat)
+      setInputValue("")
+    }
+  }, [message])
 
   return (
     <>
@@ -59,23 +80,24 @@ export default function Main() {
     </Head>
     {emailAuth &&
       <div className="inner">
-        Home Page
-
-        <div id="ai">
-          <div id="ai__response-box">
-            {textAI.map((el, index) => {
+        <div className="ai">
+          <div className="ai__response-box">
+            {currentChat.map((el, index) => {
               return (
-                <div className="ai__response" key={index}>{el}</div>
+                <div style={{ backgroundColor: el.senderID === 'user' ? 'black' : 'gray' }} className="ai__response" key={index}>
+                  <p>{el.message}</p>
+                  <p style={{ textAlign: 'right', fontSize: 12}}>{el.senderID}</p>
+                </div>
               )
             })}
           </div>
         </div>
 
         <form onSubmit={(e) => handleOpenAI(e)}>
-          <input id="ai_request" name="ai_request" type="text" value={inputValue} onChange={(e) => {
+          <input className="ai__input" id="ai_request" name="ai_request" type="text" value={inputValue} onChange={(e) => {
             setInputValue(e.target.value)
             }}/>
-          <button type="submit">Open AI</button>
+          <button className="ai__btn" type="submit">AI</button>
         </form>
       </div>
     }

@@ -1,5 +1,4 @@
 @import "./shared/variables.module.scss";
-@import "./shared/input.module.scss";
 @import "./Sign.module.scss";
 @import "./Home.module.scss";
 @import "./Header.module.scss";
@@ -129,8 +128,15 @@ input {
   @include input-width(250, 300);
   &:focus {
     outline: none;
-    // box-shadow: 0 0 15px rgb(22, 22, 22);
   }
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
 
 .visible {
@@ -156,8 +162,9 @@ input {
 button {
   border: none;
   border-radius: 0;
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(22, 22, 22);
   padding: 15px 35px;
+  border-radius: 7px;
   cursor: pointer;
 }
 

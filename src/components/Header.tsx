@@ -26,9 +26,18 @@ const Header = () => {
       <div className="container">
         {emailAuth && 
           <div className="header__inner">
+            <Link href="/">
+              <h2 className="title">BLIND MOVIE</h2>  
+            </Link>    
             <nav className="nav">
-              <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
+              <ul className="nav__list">
+                <li className="list-item">
+                  <Link href="/">Home</Link>    
+                </li>
+                <li className="list-item">
+                  <Link href="/about">About</Link>
+                </li>
+              </ul>
             </nav>
             <button className="logout-btn" onClick={handleLogOut}>
               Log out

@@ -40,3 +40,10 @@
   // box-shadow: 0 0 35px black;
   backdrop-filter: blur(5px);
 }
+
+.eye-visibility {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  cursor: pointer;
+}
