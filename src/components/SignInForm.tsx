@@ -17,7 +17,7 @@ const SignInForm = ({setError}: any) => {
       setLoading(!loading)
       await signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-          router.push('/')
+          router.push('/chat')
           setLoading(!loading)
         })
         .catch((error) => {

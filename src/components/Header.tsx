@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        {emailAuth && 
+        
           <div className="header__inner">
             <Link href="/">
               <h2 className="title">BLIND MOVIE</h2>  
@@ -32,18 +32,29 @@ const Header = () => {
             <nav className="nav">
               <ul className="nav__list">
                 <li className="list-item">
-                  <Link href="/">Home</Link>    
+                  <Link href="/chat">Chat</Link>    
                 </li>
                 <li className="list-item">
                   <Link href="/about">About</Link>
                 </li>
               </ul>
             </nav>
-            <button className="logout-btn" onClick={handleLogOut}>
-              Log out
-            </button>
+            {emailAuth 
+            ? 
+              <button className="logout-btn" onClick={handleLogOut}>
+                Log out
+              </button>
+            :
+              <div className="logs__box">
+                <Link href="/signin">
+                  Sign in
+                </Link>
+                <Link href="/signup">
+                  Sign up
+                </Link>
+              </div>
+            }
           </div>
-        }
       </div>
     </header>
   )
