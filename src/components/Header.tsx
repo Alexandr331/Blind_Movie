@@ -2,12 +2,13 @@ import UseAuth from "@/hooks/UseAuth"
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebase"
 import { useRouter } from "next/router"
-import { useAppDispatch } from "@/hooks/useStore"
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore"
 import { signout } from "@/store/UserSlice"
 import Link from "next/link"
 
 const Header = () => {
-  
+
+  const { email } = useAppSelector(state => state.user)
   const {emailAuth} = UseAuth()
   const router = useRouter()
   const dispatch = useAppDispatch()
@@ -40,10 +41,12 @@ const Header = () => {
               </ul>
             </nav>
             {emailAuth 
-            ? 
-              <button className="logout-btn" onClick={handleLogOut}>
-                Log out
-              </button>
+            ? <>
+                <span id="user-email">{email}</span>
+                <button className="logout-btn" onClick={handleLogOut}>
+                  Log out
+                </button>
+              </>
             :
               <div className="logs__box">
                 <Link href="/signin">

@@ -25,9 +25,9 @@ const SignUpForm = ({setError}: any) => {
         try {
           setLoading(true)
           const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-          await sendEmailVerification(userCredential.user)
+          // await sendEmailVerification(userCredential.user)
           setLoading(false)
-          router.push("/signin")
+          router.push("/")
           } catch (error) {
             setError(error)  
           }

@@ -1,7 +1,12 @@
 import Head from "next/head"
 import { Roboto } from 'next/font/google'
 import Header from "@/components/Header"
-import images from "@/assets"
+import { useEffect } from "react";
+import { signin } from "@/store/UserSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
+import router from 'next/router';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 
 type layout ={ 
   children: JSX.Element
@@ -9,6 +14,23 @@ type layout ={
 const inter = Roboto({ weight: "400", subsets: ["latin"] })
 
 const Layout = ({children}: layout) => {
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const userid = user.uid;
+        const userEmail = user.email;
+        dispatch(signin({
+          email: userEmail,
+          uid: userid
+        }))
+      }
+      else {
+        router.push("/signin")
+      }
+    });
+  }, [dispatch])
 
   return (
     <div className={inter.className}>

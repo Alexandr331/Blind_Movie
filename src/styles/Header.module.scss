@@ -21,3 +21,8 @@
   display: flex;
   gap: 30px;
 }
+
+#user-email {
+  @include adaptive-font(12, 16);
+  margin-right: 15px;
+}
