@@ -8,7 +8,7 @@
   font-size: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / 1680));
 }
 
-@mixin adaptive-margin($min-margin, $max-margin) {
+@mixin adaptive-margin-bottom($min-margin, $max-margin) {
   $add-margin: $max-margin - $min-margin;
   margin-bottom: calc(#{$min-margin + px} + #{$add-margin} * 100vh / 1000)
 }

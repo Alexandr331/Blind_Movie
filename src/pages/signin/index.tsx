@@ -25,7 +25,7 @@ export default function Home() {
         )}
         <SignInForm setError={setError}/>
         <div className="change-form__link">
-          Don&apos;t have an account? <Link href="/signup">Register</Link>
+          Don&apos;t have an account? <Link href="/signup" className="sign__link">Register</Link>
         </div>
       </div>
     </div>

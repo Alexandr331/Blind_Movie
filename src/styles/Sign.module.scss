@@ -3,12 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include adaptive-margin(20, 40);
+  @include adaptive-margin-bottom(20, 40);
   .form-item {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    @include adaptive-margin(10, 20)
+    @include adaptive-margin-bottom(10, 20)
   }
 }
 
@@ -46,4 +46,25 @@
   bottom: 8px;
   right: 10px;
   cursor: pointer;
+}
+
+.sign__link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.validation-box {
+  padding: 10px;
+  margin-top: -20px;
+  align-self: flex-start;
+  @include adaptive-font(10, 12);
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    img {
+      margin-left: 10px;
+    }
+  }
 }

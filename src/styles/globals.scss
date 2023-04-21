@@ -173,11 +173,12 @@ button {
 }
 
 .error {
-  padding: 20px 50px;
+  max-width: 250px;
+  padding: 10px 30px;
   border-radius: 12px;
   background-color: red;
   @include adaptive-font(12, 16);
-  @include adaptive-margin(20, 50);
+  @include adaptive-margin-bottom(20, 30);
 }
 
 main {
