@@ -15,4 +15,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     temperature: 0,
   });
   res.status(200).json({data: response.data.choices[0].text})
+  
 }

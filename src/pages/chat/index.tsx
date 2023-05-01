@@ -1,6 +1,8 @@
 import UseAuth from '@/hooks/UseAuth'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { io } from 'socket.io-client'
+
 
 interface Message {
   senderID: string | null
@@ -8,11 +10,11 @@ interface Message {
 }
 
 export default function Main() {
+
   const { emailAuth } = UseAuth()
   const [currentChat, setCurrentChat] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState("")
   const [message, setMessage] = useState("")
-
 
   const handleOpenAI = async (e: any) => {
     e.preventDefault()
